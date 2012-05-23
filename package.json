@@ -1,0 +1,12 @@
+{
+  "name": "GitHubPM",
+  "description": "Test project for managing projects using GitHub.",
+  "version": "0.0.0",
+  "author": "LocalSense Code Ninjas <dev@localsense.com>",
+  "dependencies": {
+    "express": "latest",
+    "github": "latest",
+    "jade": "latest",
+    "redis": "latest"
+  }
+}

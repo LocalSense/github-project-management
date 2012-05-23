@@ -1,0 +1,22 @@
+h1 LocalSense
+p Yep.
+
+h2 Overall Progress: #{totals.progress}%
+.progress.progress-striped.active
+  .bar(style="width: #{totals.progress}%")
+div History: #{totals.history}
+
+h2 Wall of Shame
+ol
+  - each shamedUser in shamedUsers
+    li <strong>#{shamedUser.username}</strong> with <strong>#{shamedUser.open_issues}</strong> open issues.
+
+h2 Milestones
+ol
+  - each milestone in milestones
+    li
+      strong.pull-right due #{milestone.due_on}
+      h3 #{milestone.title}: [#{milestone.open_issues}/#{milestone.closed_issues}] #{milestone.progress}%
+      .progress.progress-striped
+        .bar(style="width: #{milestone.progress}%")
+      div History: #{milestone.history}
