@@ -7,11 +7,9 @@ var express = require('express'),
     client = redis.createClient(),
     _ = require('underscore');
     
-github.authenticate({
-    type: "basic",
-    username: '', // provide the GitHub username which has access to the project.
-    password: '' // provide your password to this account.
-});    
+var config = require('./config');
+    
+github.authenticate(config.auth);    
 
 var app = express.createServer();
 
@@ -31,8 +29,8 @@ var wallOfShame = [];
 app.get('/', function(req, res){
 
   github.issues.getAllMilestones({
-    user: 'LocalSense',
-    repo: 'LocalSense',
+    user: config.project.user,
+    repo: config.project.repo,
     state: 'open',
     sort: 'due_date'
   }, function(err, milestones) {
@@ -60,8 +58,8 @@ app.get('/', function(req, res){
       console.log(totals.progress + ' ('+totals.closed_issues+'/'+(totals.closed_issues + totals.open_issues) +')');
       
       github.issues.repoIssues({
-        user: 'LocalSense',
-        repo: 'LocalSense',
+        user: config.project.user,
+        repo: config.project.repo,
         milestone: milestone.number,
         state: 'open',
         per_page: 100
