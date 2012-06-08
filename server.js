@@ -9,7 +9,7 @@ var express = require('express'),
     
 var config = require('./config');
     
-github.authenticate(config.auth);    
+github.authenticate(config.auth);
 
 var app = express.createServer();
 
@@ -94,9 +94,14 @@ app.get('/', function(req, res){
       return milestone;
     });
     
+    var projectURI = 'https://github.com/' + config.project.user + '/' + config.project.repo;
 
     console.log('rendering!');
     res.render('index', {
+      project: {
+        name: config.project.repo,
+        uri: projectURI
+      },
       shamedUsers: wallOfShame,
       milestones: milestones,
       totals: totals

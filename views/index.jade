@@ -1,4 +1,5 @@
-h1 LocalSense
+h1
+  a(href="#{project.uri}/") LocalSense
 p Yep.
 
 h2 Overall Progress: #{totals.progress}%
@@ -9,14 +10,19 @@ div History: #{totals.history}
 h2 Wall of Shame
 ol
   - each shamedUser in shamedUsers
-    li <strong>#{shamedUser.username}</strong> with <strong>#{shamedUser.open_issues}</strong> open issues.
+    li 
+      a(href="https://github.com/#{shamedUser.username}") <strong>#{shamedUser.username}</strong>
+      |  with <strong>#{shamedUser.open_issues}</strong> open issues.
 
-h2 Milestones
+h2
+  a(href="#{project.uri}/issues/milestones") Milestones
 ol
   - each milestone in milestones
     li
       strong.pull-right due #{milestone.due_on}
-      h3 #{milestone.title}: [#{milestone.open_issues}/#{milestone.closed_issues}] #{milestone.progress}%
+      h3
+        a(href="#{project.uri}/issues?milestone=#{milestone.number}&state=open") #{milestone.title}
+        | : [#{milestone.open_issues}/#{milestone.closed_issues}] #{milestone.progress}%
       .progress.progress-striped
         .bar(style="width: #{milestone.progress}%")
       div History: #{milestone.history}
