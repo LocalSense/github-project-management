@@ -1,9 +1,10 @@
 module.exports = {
+  port: 8001,
   auth: {
       type: "basic",
     , username: '' // provide the GitHub username which has access to the project.
     , password: '' // provide your password to this account.
-  }
+  },
   project: {
       user: '' // user that owns the project you would like to manage.
     , repo: '' // project you'd like to manage.
