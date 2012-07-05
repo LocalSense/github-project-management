@@ -114,7 +114,7 @@ app.get('/', function(req, res){
 
 });
 
-app.listen(8001);
+app.listen(config.port);
 
 
 function compare(a,b) {
